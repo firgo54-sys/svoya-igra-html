@@ -1,0 +1,332 @@
+/* =========================
+   БАЗА (все страницы)
+   ========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* По умолчанию — обычные страницы */
+body {
+  background: #ffffff;
+  color: #000000;
+  overflow: auto;
+}
+
+/* =========================
+   TABLO / PLAY PAGE
+   ========================= */
+
+/*
+  Этот класс есть ТОЛЬКО в play/index.html
+  <body class="board-page">
+*/
+body.board-page {
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* ❌ Заголовок убран */
+.board-title {
+  display: none !important;
+}
+
+/* Контейнер табло — весь экран */
+.board-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  padding: 0;
+}
+
+/* Табло */
+.board {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  border: 3px solid rgba(255,255,255,0.85);
+}
+
+/* Ячейки */
+.board td {
+  border: 3px solid rgba(255,255,255,0.7);
+  background: linear-gradient(180deg, #123aa8 0%, #0a2c7a 100%);
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Левая колонка — темы */
+.board .topic {
+  width: 28%;
+  text-align: left;
+  padding-left: 24px;
+  font-size: 36px;
+  font-weight: bold;
+  color: #f5e58a;
+  text-transform: uppercase;
+}
+
+/* Стоимости */
+.board .value {
+  font-size: 52px;
+  font-weight: bold;
+  color: #f5e58a;
+  cursor: pointer;
+}
+
+/* Наведение (для ведущего) */
+.board .value:hover {
+  background: linear-gradient(180deg, #1c4bd8 0%, #123aa8 100%);
+}
+
+/* Использованный вопрос */
+.board .used {
+  color: transparent;
+  cursor: default;
+  background: linear-gradient(180deg, #0b1f55 0%, #07163d 100%);
+}
+
+/* =========================
+   PLAY: экран вопроса/ответа
+   ========================= */
+
+.hidden {
+  display: none !important;
+}
+
+.question-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #000;
+}
+
+.question-card {
+  width: min(1200px, 96vw);
+  background: rgba(0,0,0,.85);
+  border: 3px solid rgba(255,255,255,.25);
+  border-radius: 18px;
+  padding: 28px;
+}
+
+.q-topic {
+  font-size: 28px;
+  opacity: .9;
+  margin-bottom: 8px;
+}
+
+.q-value {
+  font-size: 22px;
+  opacity: .7;
+  margin-bottom: 18px;
+}
+
+.q-prompt {
+  font-size: 44px;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+
+.q-answer {
+  font-size: 40px;
+  line-height: 1.2;
+  margin-top: 18px;
+  border-top: 2px solid rgba(255,255,255,.2);
+  padding-top: 14px;
+  opacity: .95;
+}
+
+.q-media {
+  max-width: 100%;
+  max-height: 60vh;
+  border-radius: 14px;
+}
+
+/* =========================
+   LOBBY / EDITOR / HOST
+   ========================= */
+
+button {
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+input {
+  padding: 6px;
+}
+
+/* =========================
+   ИГРОКИ (host / scores)
+   ========================= */
+
+/* ❌ На play игроки скрыты */
+body.board-page #playersBar,
+body.board-page .players-bar {
+  display: none !important;
+}
+
+/* Общие контейнеры */
+.players-panel {
+  margin-top: 16px;
+}
+
+/* =========================
+   SCORES PAGE
+   ========================= */
+
+body.scores-page {
+  background: #000;
+  color: #fff;
+}
+
+.scores-wrap {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.scores-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.scores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+/* Карточка игрока */
+.card {
+  border: 2px solid rgba(120,180,255,.35);
+  border-radius: 18px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(20,40,80,.25);
+}
+
+/* Левая часть: аватар + имя */
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+  flex: 0 0 auto;
+}
+
+.name {
+  font-size: 22px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.score {
+  font-size: 28px;
+  font-weight: 800;
+  min-width: 90px;
+  text-align: right;
+  color: #9fd1ff;
+}
+
+/* =========================
+   TV MODE (tv=1)
+   ========================= */
+
+html.tv,
+html.tv body {
+  height: 100%;
+}
+
+html.tv body.board-page {
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Safe-area под оверскан ТВ */
+html.tv body.board-page .board-wrapper {
+  padding: 3vh 3vw;
+  height: 100vh;
+}
+
+/* Табло крупнее */
+html.tv body.board-page .board .value {
+  font-size: 6vh;
+}
+
+html.tv body.board-page .board .topic {
+  font-size: 3.4vh;
+  padding-left: 2vh;
+}
+
+/* Чёткие линии */
+html.tv body.board-page .board td {
+  border-width: 0.35vh;
+}
+/* =========================
+   FIX: огромные аватары в HOST
+   ========================= */
+
+/* если у img нет класса, ловим его внутри карточек/панелей игроков */
+.players-panel img,
+.players-list img,
+.player-card img,
+#playersList img,
+#playersBar img {
+  width: 56px !important;
+  height: 56px !important;
+  max-width: 56px !important;
+  max-height: 56px !important;
+  object-fit: cover !important;
+  border-radius: 12px;
+  display: block;
+}
+
+/* если где-то отображается "превью" отдельно и оно большое */
+.avatar-preview,
+#avatarPreview,
+.player-avatar-preview {
+  width: 56px !important;
+  height: 56px !important;
+  object-fit: cover !important;
+  border-radius: 12px;
+  display: block;
+}
+/* HOTFIX: текст в ячейках иногда становится "прозрачным".
+   Если при выделении текст появляется — значит проблема именно в этом. */
+.board td,
+.board td * {
+  opacity: 1 !important;
+  color: #f7d24b !important;            /* можно поменять потом */
+  -webkit-text-fill-color: currentColor !important;
+  text-shadow: none !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}

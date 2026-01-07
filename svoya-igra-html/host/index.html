@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Своя игра — Ведущий</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+
+<body>
+  <!-- ШАПКА (всегда видна) -->
+  <header class="host-header" style="display:flex; gap:16px; align-items:flex-start; justify-content:space-between;">
+    <div>
+      <h1 style="margin:0 0 6px 0;">Ведущий — Своя игра</h1>
+      <div id="status">Загрузка...</div>
+    </div>
+
+    <!-- ПУЛЬТ -->
+    <div class="host-controls" style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end;">
+      <!-- Наши рабочие кнопки -->
+      <button id="btnBoard" type="button">Табло</button>
+      <button id="btnShowAnswer" type="button">Показать ответ</button>
+      <button id="btnBackToBoard" type="button">Назад на табло</button>
+
+      <!-- Старые (оставил, но они не обязательны) -->
+      <span style="opacity:.5; margin:0 6px;">|</span>
+      <button data-phase="board" type="button">Поле</button>
+      <button data-phase="question" type="button">Вопрос</button>
+      <button data-phase="answer" type="button">Ответ</button>
+    </div>
+  </header>
+
+  <!-- ====== TABLO ВЕДУЩЕГО (iframe) ====== -->
+  <!-- Скрыт по умолчанию. Открывается по кнопке "Табло". -->
+  <section
+    id="hostTabloWrap"
+    style="display:none; margin-top:12px; height: calc(100vh - 90px);"
+  >
+    <iframe
+      id="hostTabloFrame"
+      title="Табло"
+      style="width:100%; height:100%; border:0; border-radius: 12px; overflow:hidden;"
+      allow="autoplay"
+      referrerpolicy="no-referrer"
+    ></iframe>
+  </section>
+
+  <!-- ОСНОВНОЙ ЭКРАН ВЕДУЩЕГО -->
+  <main id="hostMain" class="host-main" style="margin-top:16px;">
+    <section class="players-panel">
+      <div class="players-head">
+        <div class="players-title">Игроки</div>
+
+        <div class="players-controls">
+          <label class="players-label">
+            Кол-во:
+            <select id="playersCount">
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </label>
+
+          <button id="btnApplyPlayers" type="button">Применить</button>
+          <button id="btnResetScores" type="button">Сбросить очки</button>
+        </div>
+      </div>
+
+      <div id="playersListHost" class="players-list"></div>
+    </section>
+
+    <pre id="debug" style="opacity:.7; white-space:pre-wrap; margin:0;"></pre>
+  </main>
+
+  <!-- Скрипты -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/supabase.js"></script>
+  <script src="../assets/js/host.js"></script>
+</body>
+</html>

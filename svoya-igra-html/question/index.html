@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Вопрос — Своя игра</title>
+
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/supabase.js"></script>
+</head>
+
+<body class="board-page">
+  <div id="questionScreen" class="question-screen">
+    <div class="question-card">
+      <div class="q-topic" id="qTopic"></div>
+      <div class="q-value" id="qValue"></div>
+
+      <div class="q-prompt" id="qPrompt">Ожидание вопроса…</div>
+
+      <img id="qImage" class="q-media hidden" alt="">
+      <audio id="qAudio" class="q-media hidden" controls></audio>
+
+      <div id="qAnswer" class="q-answer hidden"></div>
+    </div>
+  </div>
+
+  <script src="../assets/js/question.js"></script>
+</body>
+</html>

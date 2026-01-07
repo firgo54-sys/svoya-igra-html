@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Редактор — Своя игра</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+
+<body>
+  <h1>Редактор — Своя игра</h1>
+
+  <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin:12px 0;">
+    <a href="../lobby/index.html">← Lobby</a>
+
+    <button id="btnCreateGame">Создать новую игру</button>
+
+    <span style="opacity:.8;">gameId:</span>
+    <span id="gameIdText" style="font-weight:700;">—</span>
+
+    <span style="opacity:.8; margin-left:10px;">Раунд:</span>
+    <select id="roundSelect" disabled></select>
+
+    <button id="btnAddRound" disabled>➕ Добавить раунд</button>
+
+    <span id="status" style="opacity:.8; font-size:14px;"></span>
+  </div>
+
+  <div id="grid">Загрузка…</div>
+
+  <!-- Модалка вопроса -->
+  <div id="modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.6);">
+    <div style="background:#fff; color:#000; width:min(820px,92vw); margin:8vh auto; padding:16px; border-radius:8px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+        <div id="modalTitle" style="font-weight:700;"></div>
+        <button id="closeModal">✕</button>
+      </div>
+
+      <div style="margin-top:12px; display:grid; gap:10px;">
+        <label>Вопрос
+          <textarea id="qText" rows="4" style="width:100%;"></textarea>
+        </label>
+
+        <label>Ответ
+          <textarea id="aText" rows="3" style="width:100%;"></textarea>
+        </label>
+
+        <!-- ✅ Спец-вопрос -->
+        <label>Спец-вопрос
+          <select id="specialKind" style="width:100%; padding:6px;">
+            <option value="">— нет —</option>
+            <option value="cat">Кот в мешке</option>
+            <option value="auction">Аукцион</option>
+            <option value="final">Финал</option>
+          </select>
+        </label>
+
+        <label>Параметры спец-вопроса (JSON, опционально)
+          <textarea id="specialPayload" rows="3" style="width:100%;"></textarea>
+        </label>
+
+        <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:6px;">
+          <button id="saveBtn">Сохранить</button>
+        </div>
+
+        <div id="modalMsg" style="font-size:12px; opacity:.8;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/supabase.js"></script>
+  <script src="../assets/js/editor.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Своя игра — Табло</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+
+  <!-- Общие стили -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+
+<body class="board-page">
+
+
+  <!-- Панель игроков (обновляется через Realtime) -->
+  <div id="playersBar" class="players-bar"></div>
+
+  <!-- Табло -->
+  <div class="board-wrapper">
+    <table class="board" id="board">
+      <tbody>
+        <tr>
+          <td class="topic">ТЕМА 1</td>
+          <td class="value">100</td>
+          <td class="value">200</td>
+          <td class="value">300</td>
+          <td class="value">400</td>
+          <td class="value">500</td>
+        </tr>
+        <tr>
+          <td class="topic">ТЕМА 2</td>
+          <td class="value">100</td>
+          <td class="value">200</td>
+          <td class="value">300</td>
+          <td class="value">400</td>
+          <td class="value">500</td>
+        </tr>
+        <tr>
+          <td class="topic">ТЕМА 3</td>
+          <td class="value">100</td>
+          <td class="value">200</td>
+          <td class="value">300</td>
+          <td class="value">400</td>
+          <td class="value">500</td>
+        </tr>
+        <tr>
+          <td class="topic">ТЕМА 4</td>
+          <td class="value">100</td>
+          <td class="value">200</td>
+          <td class="value">300</td>
+          <td class="value">400</td>
+          <td class="value">500</td>
+        </tr>
+        <tr>
+          <td class="topic">ТЕМА 5</td>
+          <td class="value">100</td>
+          <td class="value">200</td>
+          <td class="value">300</td>
+          <td class="value">400</td>
+          <td class="value">500</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Экран вопроса/ответа (play только отображает) -->
+  <div id="questionScreen" class="question-screen hidden">
+    <div class="question-card">
+      <div id="qTopic" class="q-topic"></div>
+      <div id="qValue" class="q-value"></div>
+
+      <div id="qPrompt" class="q-prompt"></div>
+
+      <img id="qImage" class="q-media hidden" alt="" />
+      <audio id="qAudio" class="q-media hidden" controls></audio>
+
+      <div id="qAnswer" class="q-answer hidden"></div>
+    </div>
+  </div>
+
+  <!-- Supabase + общая инициализация + логика play -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/supabase.js"></script>
+  <script src="../assets/js/play.js"></script>
+
+</body>
+</html>
